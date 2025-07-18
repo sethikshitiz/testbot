@@ -13,7 +13,11 @@ def webhook():
 
     if "@bot" in msg:
         reply = f"👋 Hello {name}! I'm active and ready."
-        return jsonify({"reply": reply})
+        # Respond in WATI-compatible format
+        return jsonify({
+            "recipient": sender,
+            "message": reply
+        })
 
     return jsonify({"status": "ok"})
 
